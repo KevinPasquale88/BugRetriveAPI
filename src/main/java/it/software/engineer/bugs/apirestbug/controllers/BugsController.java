@@ -40,12 +40,12 @@ public class BugsController {
         }
 
         try {
-            File myObj = new File("jsonBugs.txt");
+            File myObj = new File("src/main/resources/jsonBugs.txt");
             if (myObj.createNewFile()) {
                 bugs
                         .putAll(bugzillaAPIServices.getBugs())
                         .putAll(mantiBTAPIServices.getBugs());
-                FileWriter myWriter = new FileWriter("jsonBugs.txt");
+                FileWriter myWriter = new FileWriter("src/main/resources/jsonBugs.txt");
                 myWriter.write(bugs.toString());
                 myWriter.close();
             }
