@@ -5,7 +5,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.URI;
-import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -23,7 +22,6 @@ public class BugzillaClient extends APIClient {
     @Override
     public JSONArray retriveBugs() {
         log.info("Call client Bugzilla");
-        HttpClient client = HttpClient.newHttpClient();
         JSONArray issues = new JSONArray();
 
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
