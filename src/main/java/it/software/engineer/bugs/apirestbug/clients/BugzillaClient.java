@@ -1,19 +1,12 @@
 package it.software.engineer.bugs.apirestbug.clients;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import it.software.engineer.bugs.apirestbug.clients.utilsBugZilla.Bug;
-import it.software.engineer.bugs.apirestbug.clients.utilsBugZilla.BugzillaJSON;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
