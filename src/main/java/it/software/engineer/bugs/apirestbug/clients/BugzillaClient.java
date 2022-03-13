@@ -49,7 +49,7 @@ public class BugzillaClient extends APIClient {
 
                 JSONArray issuesJSON = obj.getJSONArray("bugs");
                 issues.putAll(issuesJSON);
-                log.info("SizeResponse=" + issuesJSON.length() + " - request= " + request.toString());
+                log.info("SizeResponse= " + issuesJSON.length() + " - request= " + request.toString());
                 if (issuesJSON.length() < 100) end = true;
         }
         executor.shutdown();

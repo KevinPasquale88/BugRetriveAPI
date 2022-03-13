@@ -54,7 +54,7 @@ public class MantisBTClient extends APIClient {
             JSONObject obj = new JSONObject(callThread.getResponse());
             JSONArray issuesJSON = obj.getJSONArray("issues");
             size_pag = issuesJSON.length();
-            log.info("SizeResponse=" + size_pag + " - request= " + request.toString());
+            log.info("SizeResponse= " + size_pag + " - request= " + request.toString());
             issues.putAll(issuesJSON);
         }
         executor.shutdown();

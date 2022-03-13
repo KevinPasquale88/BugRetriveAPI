@@ -19,8 +19,6 @@ public class MantiBTAPIServices extends Thread{
         bugs = getAllBugsMantis();
     }
 
-
-
     public JSONArray getBugs(){
         return this.bugs;
     }
@@ -28,6 +26,8 @@ public class MantiBTAPIServices extends Thread{
     private JSONArray getAllBugsMantis(){
         log.info("Call API MantiBT . . .");
         MantisBTClient client = new MantisBTClient(hostmantis);
-        return client.retriveBugs();
+        JSONArray responseMantiClient = client.retriveBugs();
+        log.info("Response Size MantiBT - response = {}", responseMantiClient.length());
+        return responseMantiClient;
     }
 }

@@ -23,7 +23,7 @@ public class BugsController {
     BugzillaAPIServices bugzillaAPIServices;
 
     @GetMapping(value = "/bugs",name = "All Bugs", produces = "application/json")
-    public boolean getAllBugs() {
+    public JSONArray getAllBugs() {
         JSONArray bugs = new JSONArray();
         mantiBTAPIServices.start();
         bugzillaAPIServices.start();
@@ -35,25 +35,26 @@ public class BugsController {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             log.error("Thread interrupted", e);
-            return false;
+            return null;
         }
 
         try {
-            File myObj = new File("src/main/resources/jsonBugs.txt");
+            log.info("Size JSON - size {}", bugzillaAPIServices.getBugs().length());
+            File myObj = new File("C:\\jsonBugs.txt");
             if (myObj.createNewFile()) {
                 bugs
                         .putAll(bugzillaAPIServices.getBugs())
                         .putAll(mantiBTAPIServices.getBugs());
-                FileWriter myWriter = new FileWriter("src/main/resources/jsonBugs.txt");
+                FileWriter myWriter = new FileWriter("C:\\jsonBugs.txt");
                 myWriter.write(bugs.toString());
                 myWriter.close();
             }
         } catch (IOException ex) {
             log.error(ex.getMessage());
-            return false;
+            return null;
         }
 
-        return true;
+        return bugs;
     }
 
 }

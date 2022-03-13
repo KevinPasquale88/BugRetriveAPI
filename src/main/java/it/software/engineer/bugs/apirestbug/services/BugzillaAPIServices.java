@@ -27,7 +27,9 @@ public class BugzillaAPIServices extends Thread {
     private JSONArray getAllBugsBugzilla(){
         log.info("Call API Bugzilla . . .");
         BugzillaClient client = new BugzillaClient(hostbugzilla);
-        return client.retriveBugs();
+        JSONArray responseMantiClient = client.retriveBugs();
+        log.info("Response Size Bugzilla API - response = {}", responseMantiClient.length());
+        return responseMantiClient;
     }
 
 }
