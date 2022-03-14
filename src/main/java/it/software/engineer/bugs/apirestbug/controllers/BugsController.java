@@ -2,6 +2,7 @@ package it.software.engineer.bugs.apirestbug.controllers;
 
 import it.software.engineer.bugs.apirestbug.services.BugzillaAPIServices;
 import it.software.engineer.bugs.apirestbug.services.MantiBTAPIServices;
+import it.software.engineer.bugs.apirestbug.utils.MemoryStats;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,4 +58,12 @@ public class BugsController {
         return bugs;
     }
 
+    @GetMapping("memory-status")
+    public MemoryStats getMemoryStatistics() {
+        MemoryStats stats = new MemoryStats();
+        stats.setHeapSize(Runtime.getRuntime().totalMemory());
+        stats.setHeapMaxSize(Runtime.getRuntime().maxMemory());
+        stats.setHeapFreeSize(Runtime.getRuntime().freeMemory());
+        return stats;
+    }
 }
